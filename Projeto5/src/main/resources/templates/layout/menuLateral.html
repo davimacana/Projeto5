@@ -6,12 +6,12 @@
     Tip 2: you can also add an image using data-image tag
 -->
 	<div class="logo">
-		<a th:href="@{/Vendas}" class="simple-text logo-normal">Vendas</a>
+		<a th:href="@{/dashboard}" class="simple-text logo-normal">Eventos</a>
 	</div>
 	<div class="sidebar-wrapper">
 		<ul class="nav">
-			<li class="nav-item active  "><a class="nav-link" th:href="@{/}">
-					<i class="material-icons">dashboard</i>
+			<li class="nav-item active  "><a class="nav-link"
+				th:href="@{/dashboard}"> <i class="material-icons">dashboard</i>
 					<p>Dashboard</p>
 			</a></li>
 			<li class="nav-item "><a class="nav-link" th:href="@{/perfil}">
@@ -20,14 +20,14 @@
 			</a></li>
 			<li class="nav-item "><a class="nav-link" th:href="@{/eventos}">
 					<i class="material-icons">events</i>
-					<p>Eventos</p>
+					<p>Cadastrar Eventos</p>
 			</a></li>
-			<li class="nav-item "><a class="nav-link" href="./tables.html">
+			<li class="nav-item "><a class="nav-link" th:href="@{/tables}">
 					<i class="material-icons">content_paste</i>
 					<p>Table List</p>
 			</a></li>
-			<li class="nav-item "><a class="nav-link"
-				href="./typography.html"> <i class="material-icons">library_books</i>
+			<li class="nav-item "><a class="nav-link" th:href="@{/typography}">
+				<i class="material-icons">library_books</i>
 					<p>Typography</p>
 			</a></li>
 			<li class="nav-item "><a class="nav-link" href="./icons.html">
