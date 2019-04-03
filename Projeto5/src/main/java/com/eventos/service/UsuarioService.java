@@ -28,9 +28,6 @@ public class UsuarioService implements UserDetailsService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	/***
-	 * CONSULTA UM USUÁRIO POR LOGIN
-	 */
 	@Override
 	public UserDetails loadUserByUsername(String login) throws BadCredentialsException, DisabledException {
 
@@ -45,11 +42,6 @@ public class UsuarioService implements UserDetailsService {
 		return new UsuarioSecurityModel(usuario);
 	}
 
-	/***
-	 * SALVA UM NOVO REGISTRO DE USUÁRIO
-	 * 
-	 * @param usuarioModel
-	 */
 	public void salvarUsuario(UsuarioModel usuarioModel) {
 
 		Usuario usuario = new Usuario();
@@ -57,17 +49,14 @@ public class UsuarioService implements UserDetailsService {
 		usuario.setAtivo(true);
 		usuario.setLogin(usuarioModel.getLogin());
 		usuario.setNome(usuarioModel.getNome());
+		usuario.setSobrenome(usuarioModel.getNome());
+		usuario.setEmail("davirj9@hotmail.com");
 		usuario.setPerfil(usuarioModel.getPerfil());
 		usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.getSenha()));
 
 		this.usuarioRepository.save(usuario);
 	}
 
-	/***
-	 * CONSULTA OS USUÁRIOS CADASTRADOS
-	 * 
-	 * @return
-	 */
 	public List<UsuarioModel> consultarUsuarios() {
 
 		List<UsuarioModel> usuariosModel = new ArrayList<UsuarioModel>();
@@ -81,20 +70,11 @@ public class UsuarioService implements UserDetailsService {
 		return usuariosModel;
 	}
 
-	/**
-	 * DELETA UM USUÁRIO PELO CÓDIGO
-	 */
 	public void excluir(Long codigoUsuario) {
 
 		this.usuarioRepository.deleteById(codigoUsuario);
 	}
 
-	/***
-	 * CONSULTA UM USUÁRIO PELO SEU CÓDIGO
-	 * 
-	 * @param codigoUsuario
-	 * @return
-	 */
 	public UsuarioModel consultarUsuario(Long codigoUsuario) {
 
 		Optional<Usuario> usuario = this.usuarioRepository.findById(codigoUsuario);
@@ -104,9 +84,6 @@ public class UsuarioService implements UserDetailsService {
 
 	}
 
-	/**
-	 * ALTERA AS INFORMAÇÕES DO USUÁRIO
-	 */
 	public void alterarUsuario(UsuarioModel usuarioModel) {
 
 		Optional<Usuario> usuario = this.usuarioRepository.findById(usuarioModel.getId());
@@ -119,5 +96,22 @@ public class UsuarioService implements UserDetailsService {
 
 		this.usuarioRepository.save(usuario.get());
 	}
+	
+	public void alterarUsuario(Usuario usuario, Usuario usuarioLogado) {
+		usuarioLogado.setNome(usuario.getNome());
+		usuarioLogado.setSobrenome(usuario.getSobrenome());
+		usuarioLogado.setSobre(usuario.getSobre());
+		usuarioLogado.setEndereco(usuario.getEndereco());
+		this.usuarioRepository.save(usuarioLogado);
+	}
+
+	public void cadastrarUsuario(Usuario usuario) {
+		
+	}
+	
+	public Optional<Usuario> findById(Long id) {
+		return this.usuarioRepository.findById(id);
+	}
+	
 
 }

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author Davi Maçana
  *
@@ -28,7 +30,9 @@ public class Evento {
 	private String nome;
 	private String emailResponsavel;
 	private String descricaoEvento;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataEvento;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataAtualizacao;
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_evento")
