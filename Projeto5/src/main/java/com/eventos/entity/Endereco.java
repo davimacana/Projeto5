@@ -20,6 +20,7 @@ public class Endereco {
 	@Column(name="id_endereco")
 	private Long id;
 	private String uf;
+	private String cidade;
 	private String bairro;
 	private String rua;
 	private String numero;
@@ -42,6 +43,12 @@ public class Endereco {
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 	public String getBairro() {
 		return bairro;

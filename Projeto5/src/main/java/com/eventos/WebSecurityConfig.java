@@ -17,7 +17,7 @@ import com.eventos.service.UsuarioService;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private final static String[] PERMIT_PATH =  {"/resources/**", "/css/**","/fonts/**","/img/**","/js/**","/favicon.png","/esqueci-minha-senha","/cadastrar"};
+	private final static String[] PERMIT_PATH =  {"/resources/**", "/css/**","/fonts/**","/img/**","/js/**","/favicon.png","/esqueci-minha-senha","/cadastrar", "/recuperaSenha"};
 	
 	@Autowired
 	private UsuarioService usuarioService;
