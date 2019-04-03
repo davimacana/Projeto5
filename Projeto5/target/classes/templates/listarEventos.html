@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/head"></head>
+
+<body class="dark-edition">
+	<div class="wrapper ">
+		<div th:replace="layout/menuLateral"></div>
+		<div class="main-panel">
+			<!-- Navbar -->
+			<nav th:replace="layout/menuSuperior"></nav>
+			<!-- End Navbar -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header card-header-primary">
+									<h4 class="card-title ">Eventos cadastrados</h4>
+									<p class="card-category">Lista de eventos cadastrados</p>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead class=" text-primary">
+												<th>Data</th>
+												<th>Cidade</th>
+												<th>Evento</th>
+												<th>Modalidade</th>
+												<th>Ação</th>
+											</thead>
+											<tbody th:each="evento : ${eventos}" th:remove="tag">
+												<tr>
+													<td th:text="${#dates.format(evento.dataEvento, 'dd/MM/yyyy')}"></td>
+													<td th:text="${evento.endereco.cidade}"></td>
+													<td class="text-primary" th:text="${evento.nome}"></td>
+													<td th:text="${evento.tipoEvento.descricaoTipo}"></td>
+													<td><a class="material-icons">search</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="card card-plain">
+								<div class="card-header card-header-primary">
+									<h4 class="card-title mt-0">Detalhes do evento</h4>
+									<p class="card-category">Informação completa do evento</p>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead class="">
+												<th>ID</th>
+												<th>Name</th>
+												<th>Country</th>
+												<th>City</th>
+												<th>Salary</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>Dakota Rice</td>
+													<td>Niger</td>
+													<td>Oud-Turnhout</td>
+													<td>$36,738</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer th:replace="layout/footer"></footer>
+		</div>
+	</div>
+	<!--   Core JS Files   -->
+	<div th:replace="layout/scripts"></div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/head"></head>
+
+<body class="dark-edition">
+	<div class="wrapper ">
+		<div th:replace="layout/menuLateral"></div>
+		<div class="main-panel">
+			<!-- Navbar -->
+			<nav th:replace="layout/menuSuperior"></nav>
+			<!-- End Navbar -->
+			<div class="content">
+				<div class="row">
+	         		<div class="alert alert-success alert-dismissible js-alert-fadeout" th:if="${mensagem} != null" role="alert">
+			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<span th:text="${mensagem}"></span>
+			        </div>
+			        <div class="alert alert-success alert-dismissible js-alert-fadeout" th:if="${mensagemSucessoEditar} != null" role="alert">
+			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<span th:text="${mensagemSucessoEditar}"></span>
+			        </div>
+	         	</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="card">
+								<div class="card-header card-header-primary">
+									<h4 class="card-title">Editar perfil</h4>
+									<p class="card-category">Complete seu perfil</p>
+								</div>
+								<div class="card-body">
+									<form th:action="@{/perfil}" method="post" th:object="${usuario}" id="formPerfil">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label class="bmd-label-floating">Login</label> 
+													<input type="text" class="form-control" th:field="*{login}" disabled required>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="bmd-label-floating">Email</label> 
+													<input type="text" class="form-control" th:field="*{email}" disabled required>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="bmd-label-floating">Nome</label> 
+													<input type="text" class="form-control" th:field="*{nome}" required>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="bmd-label-floating">Sobrenome</label> 
+													<input type="text" class="form-control" th:field="*{sobrenome}" required>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2">
+												<div class="form-group">
+													<label class="bmd-label-floating">UF</label> 
+													<input type="text" class="form-control" th:field="*{endereco.uf}">
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label class="bmd-label-floating">Bairro</label> 
+													<input type="text" class="form-control" th:field="*{endereco.bairro}">
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label class="bmd-label-floating">Rua</label> 
+													<input type="text" class="form-control" th:field="*{endereco.rua}">
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group">
+													<label class="bmd-label-floating">Numero</label> 
+													<input type="text" class="form-control" th:field="*{endereco.numero}">
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group">
+													<label class="bmd-label-floating">Cep</label> 
+													<input type="text" class="form-control" th:field="*{endereco.cep}">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<label>Sobre mim</label>
+													<div class="form-group">
+														<textarea class="form-control" rows="5" th:field="*{sobre}"></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+										<button type="submit" class="btn btn-primary pull-right">Atualizar perfil</button>
+										<div class="clearfix"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card card-profile">
+								<div class="card-avatar">
+									<a href="#pablo"> <img class="img"
+										th:src="@{/img/faces/marc.jpg}" />
+									</a>
+								</div>
+								<div class="card-body">
+									<h6 class="card-category" th:text="${usuario.sobrenome}"></h6>
+									<h4 class="card-title" th:text="${usuario.nome}"></h4>
+									<p class="card-description" th:text="${usuario.sobre}"></p>
+									<!--<a href="#pablo" class="btn btn-primary btn-round">Follow</a>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer th:replace="layout/footer"></footer>
+		</div>
+	</div>
+	<!--   Core JS Files   -->
+	<div th:replace="layout/scripts"></div>
+</body>
+</html>
