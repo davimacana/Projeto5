@@ -5,13 +5,14 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.eventos.entity.Endereco;
 import com.eventos.entity.Evento;
 import com.eventos.entity.Perfil;
 import com.eventos.entity.TipoEvento;
-import com.eventos.model.UsuarioModel;
+import com.eventos.entity.Usuario;
 import com.eventos.repository.TipoEventoRepository;
 import com.eventos.service.EventoService;
 import com.eventos.service.UsuarioService;
@@ -34,13 +35,15 @@ public class PostConstructInit {
  
     @PostConstruct
     public void init() {
-    	UsuarioModel usuario = new UsuarioModel(); 
+    	Usuario usuario = new Usuario(); 
     	usuario.setAtivo(true);
     	usuario.setLogin("admin");
     	usuario.setNome("Davi");
+    	usuario.setSobrenome("Maçana");
+    	usuario.setEmail("davirj9@hotmail.com");
     	usuario.setPerfil(Perfil.ADMIN);
-    	usuario.setSenha("123");
-    	usuarioService.salvarUsuario(usuario);
+    	usuario.setSenha(new BCryptPasswordEncoder().encode("123"));
+		usuarioService.cadastrarUsuario(usuario);
     	
     	TipoEvento tipoEvento1 = new TipoEvento();
     	tipoEvento1.setDescricaoTipo("Corrida");

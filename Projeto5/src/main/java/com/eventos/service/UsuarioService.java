@@ -1,7 +1,5 @@
 package com.eventos.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,34 +40,6 @@ public class UsuarioService implements UserDetailsService {
 		return new UsuarioSecurityModel(usuario);
 	}
 
-	public void salvarUsuario(UsuarioModel usuarioModel) {
-
-		Usuario usuario = new Usuario();
-
-		usuario.setAtivo(true);
-		usuario.setLogin(usuarioModel.getLogin());
-		usuario.setNome(usuarioModel.getNome());
-		usuario.setSobrenome(usuarioModel.getNome());
-		usuario.setEmail("davirj9@hotmail.com");
-		usuario.setPerfil(usuarioModel.getPerfil());
-		usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.getSenha()));
-
-		this.usuarioRepository.save(usuario);
-	}
-
-	public List<UsuarioModel> consultarUsuarios() {
-
-		List<UsuarioModel> usuariosModel = new ArrayList<UsuarioModel>();
-		List<Usuario> usuariosEntity = (List<Usuario>) this.usuarioRepository.findAll();
-		usuariosEntity.forEach(usuario -> {
-
-			usuariosModel.add(new UsuarioModel(usuario.getId(), usuario.getNome(), usuario.getLogin(), null,
-					usuario.isAtivo(), null));
-		});
-
-		return usuariosModel;
-	}
-
 	public void excluir(Long codigoUsuario) {
 
 		this.usuarioRepository.deleteById(codigoUsuario);
@@ -106,11 +76,16 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	public void cadastrarUsuario(Usuario usuario) {
-		
+		this.usuarioRepository.save(usuario);
 	}
 	
 	public Optional<Usuario> findById(Long id) {
 		return this.usuarioRepository.findById(id);
+	}
+
+	public void recuperarSenha(Usuario usuario) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

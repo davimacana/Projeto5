@@ -25,6 +25,10 @@ hs_err_pid*
 HELP.md
 /target/
 /target
+Projeto5/target/
+Projeto5/target
+/Projeto5/target
+/Projeto5/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -52,3 +56,4 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+/Projeto5/

@@ -17,6 +17,14 @@
 									<p class="card-category">Complete os seus dados</p>
 								</div>
 								<div class="card-body">
+									<div class="alert alert-danger alert-dismissible js-alert-fadeout" th:if="${mensagem} != null" role="alert">
+							        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        	<span th:text="${mensagemErro}"></span>
+							        </div>
+							        <div class="alert alert-success alert-dismissible js-alert-fadeout" th:if="${mensagemSucesso} != null" role="alert">
+							        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        	<span th:text="${mensagemSucesso}"></span>
+							        </div>
 									<form th:action="@{/cadastrar}" method="post" th:object="${usuario}" id="formCadastrar">
 										<div class="row">
 											<div class="col-md-6">
