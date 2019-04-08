@@ -41,7 +41,6 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	public void excluir(Long codigoUsuario) {
-
 		this.usuarioRepository.deleteById(codigoUsuario);
 	}
 
@@ -51,20 +50,6 @@ public class UsuarioService implements UserDetailsService {
 
 		return new UsuarioModel(usuario.get().getId(), usuario.get().getNome(), usuario.get().getLogin(), null,
 				usuario.get().isAtivo(), usuario.get().getPerfil());
-
-	}
-
-	public void alterarUsuario(UsuarioModel usuarioModel) {
-
-		Optional<Usuario> usuario = this.usuarioRepository.findById(usuarioModel.getId());
-
-		usuario.get().setAtivo(usuarioModel.isAtivo());
-		usuario.get().setLogin(usuarioModel.getLogin());
-		usuario.get().setNome(usuarioModel.getNome());
-		if (!StringUtils.isEmpty(usuarioModel.getSenha()))
-			usuario.get().setSenha(new BCryptPasswordEncoder().encode(usuarioModel.getSenha()));
-
-		this.usuarioRepository.save(usuario.get());
 	}
 	
 	public void alterarUsuario(Usuario usuario, Usuario usuarioLogado) {
