@@ -46,7 +46,7 @@ public class EventosController {
 		return model;
 	}
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	public ModelAndView salvar(Evento evento, RedirectAttributes redirectAttrs) {
 		ModelAndView model = new ModelAndView("/eventos");
 		try {
@@ -58,6 +58,17 @@ public class EventosController {
 			logger.log(Level.SEVERE, e.toString(), e);
 			model.addObject("evento", evento);
 			model.addObject("mensagemErro", "Ocorreu um erro inesperado. Favor, entrar em contato com o administrador do sistema.");
+		}
+		return model;
+	}
+	
+	@PostMapping("/detalhar")
+	public ModelAndView detalharEvento() {
+		ModelAndView model = new ModelAndView();
+		try {
+			System.out.println("Teste");
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, e.toString(), e);
 		}
 		return model;
 	}

@@ -28,7 +28,7 @@
 							        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							        	<span th:text="${mensagemSucesso}"></span>
 							        </div>
-									<form th:action="@{/eventos}" method="post" th:object="${evento}" id="formEvento">
+									<form th:action="@{/eventos/salvar}" method="post" th:object="${evento}" id="formEvento">
 										<div class="row">
 											<div class="col-md-5">
 												<div class="form-group">

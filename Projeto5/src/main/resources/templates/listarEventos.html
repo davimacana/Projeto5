@@ -36,7 +36,9 @@
 													<td th:text="${evento.endereco.cidade}"></td>
 													<td class="text-primary" th:text="${evento.nome}"></td>
 													<td th:text="${evento.tipoEvento.descricaoTipo}"></td>
-													<td><a id="detalharEvento" class="material-icons" title="detalharEvento">search</a></td>
+													<td>
+														<a id="detalharEvento" href="#" class="material-icons" title="detalharEvento">search</a>
+													</td>
 												</tr>
 											</tbody>
 										</table>
@@ -82,5 +84,7 @@
 	</div>
 	<!--   Core JS Files   -->
 	<div th:replace="layout/scripts"></div>
+	<script type="text/javascript" th:src="@{/listaEventos.js}"></script>
+	
 </body>
 </html>
