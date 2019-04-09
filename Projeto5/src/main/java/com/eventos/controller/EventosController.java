@@ -63,14 +63,12 @@ public class EventosController {
 	}
 	
 	@PostMapping("/detalhar")
-	public ModelAndView detalharEvento() {
-		ModelAndView model = new ModelAndView();
+	public void detalharEvento() {
 		try {
 			System.out.println("Teste");
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, e.toString(), e);
 		}
-		return model;
 	}
 	
 }
