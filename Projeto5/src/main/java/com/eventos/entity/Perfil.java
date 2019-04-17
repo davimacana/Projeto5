@@ -5,5 +5,5 @@ package com.eventos.entity;
  *
  */
 public enum Perfil {
-	ADMIN, USER
+	ROLE_ADMIN, ROLE_USER
 }

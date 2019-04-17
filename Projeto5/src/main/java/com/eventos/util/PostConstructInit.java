@@ -41,7 +41,7 @@ public class PostConstructInit {
     	usuario.setNome("Davi");
     	usuario.setSobrenome("Maçana");
     	usuario.setEmail("davirj9@hotmail.com");
-    	usuario.setPerfil(Perfil.ADMIN);
+    	usuario.setPerfil(Perfil.ROLE_ADMIN);
     	usuario.setSenha(new BCryptPasswordEncoder().encode("123"));
 		usuarioService.cadastrarUsuario(usuario);
     	
